@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_f.c                                       :+:      :+:    :+:   */
+/*   ft_prints.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/05/24 23:57:16 by david            ###   ########.fr       */
+/*   Created: 2023/05/25 19:35:44 by david             #+#    #+#             */
+/*   Updated: 2023/05/25 22:48:48 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "printf.h"
 
-int	ft_printf(char const *format, ...)
+int	ft_prints(char *c)
 {
-	va_list	args;
-	int		result;
+	int	i;
+	int	counter;
 
-	result = 0;
-	va_start(args, format);
-	//parse format && print
-
-	va_end(args);
-	return (result);
+	i = 0;
+	counter = 0;
+	while (c[i] != '\0')
+	{
+		counter += write(1, &c[i], 1);
+		i++;
+	}
+	return (counter);
 }
