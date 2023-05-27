@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/05/25 23:18:15 by david            ###   ########.fr       */
+/*   Updated: 2023/05/27 20:29:20 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_eval_format(va_list args, int *format, int f)
+int	ft_eval_format(va_list args, char format)
 {
-	if (*format == 'c')
-		f += ft_printc((char) va_arg(args, int));
-	if (*format == 's')
-		f += ft_prints(va_arg(args, char *));
-	if (*format == 'd' || *format == 'i')
-		f += ft_printnb(va_arg(args, int));
-	return (f);
+	unsigned int	len;
+	
+	len = 0;
+	if (format == 'c')
+		len = ft_print_char((char) va_arg(args, int));
+	if (format == 's')
+		len = ft_prints(va_arg(args, char *));
+	/*if (*format == 'd' || *format == 'i')
+		f += ft_printnb(va_arg(args, int));*/
+	//printf("len: %i\n", len);
+	return (len);
 }
 
 
-int	ft_check_format(char *format, va_list args, int *result)
+int	ft_check_format(const char *format, va_list args, int result)
 {
 	int	i;
 
@@ -32,10 +36,15 @@ int	ft_check_format(char *format, va_list args, int *result)
 	while (format[++i])
 	{
 		if (format[i] == '%')
-			i = ft_eval_format(args, format, i + 1);
+		{
+			printf("i: %i\n", i);
+			result = ft_eval_format(args, format[i + 1]);
+		}
 		else
 			result += write(1, &format[i], 1);
 	}
+	printf("result check format b: %i\n", result);
+	printf("result check format i: %i\n", i);
 	return (result);
 }
 
@@ -45,32 +54,39 @@ int	ft_printf(char const *format, ...)
 	va_list	args;
 	int		result;
 
-	result = 0;
+	
 	va_start(args, format);
 	//parse format && print
-	if (ft_eval_format(*format, args, &result) == -1)
+	result = ft_check_format(format, args, 0);
+	if ( result == -1)
 	{
 		va_end(args);
 		return (-1);
 
 	}
 	va_end(args);
+	//printf("result:%i", result);
 	return (result);
 }
 
 int	main()
 {
-	char	c;
+	//int	*c;
 	char	*s;
 
-	c = 'a';
-	s = "my name is david";
+	//c = 'a';
+	s = "david";
 
-	ft_printf('a');
-	ft_printf(s);
+	//int test = 93;
 
-	printf("Function C: %c\n", c);
-	printf("Function S: %s\n", s);
+	//printf("test vale: %i", test)
+
+	ft_printf("david%s");
+	
+	//printf("My func: %d\n", ft_printf(s));
+
+	//printf("Function C: %c\n", &c);
+	//printf("1");
 
 	return (0);
 }

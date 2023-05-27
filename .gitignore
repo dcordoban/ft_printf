@@ -59,3 +59,4 @@ dkms.conf
 .vscode/tasks.json
 src/
 ./vscode
+.vscode/launch.json
