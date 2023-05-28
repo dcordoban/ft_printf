@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prints.c                                        :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 19:35:44 by david             #+#    #+#             */
-/*   Updated: 2023/05/28 20:55:24 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/05/28 20:30:52 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/28 20:50:46 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_prints(char *c)
+int	ft_print_p(void	*p)
 {
-	size_t	i;
+	unsigned long long	ptr;
+	int					counter;
 
-	i = 0;
-
-	while (c[i] != '\0')
-	{
-		if (write(1, &c[i], 1) == -1)
-			return (-1);
-		i++;
-	}
-	return (i);
+	ptr = (unsigned long long)p;
+	
 }
