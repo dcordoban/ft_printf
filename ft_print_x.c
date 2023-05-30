@@ -1,42 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnb.c                                       :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 21:57:20 by david             #+#    #+#             */
-/*   Updated: 2023/05/30 19:47:44 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/05/30 20:06:34 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/30 20:29:30 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnb(int n)
+static int	ft_print_hex_minus(unsigned int nb)
 {
 	int	counter;
+	char	*hex;
 
 	counter = 0;
-	if (n == -2147483648)
+	hex = '0123456789adcdef';
+		
+	while (nb)
 	{
-		counter += ft_print_char('-');
-		counter += ft_print_char('2');
-		ft_printnb(147483648);
-		return (counter);
+		nb = nb / 16;
+		counter += ft_print_char(&hex[nb]);
 	}
-	if (n < 0)
-	{
-		counter += ft_print_char('-');
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		ft_printnb(n / 10);
-		n = n % 10;
-	}
-	if (n < 10)
-		counter += ft_print_char('0' + n);
 	return (counter);
 }
 
+static int	ft_print_hex_mayus(unsigned int nb)
+{
+	int	counter;
+	char	*hex;
+
+	counter = 0;
+	hex = '0123456789ABCDEF';
+		
+	while (nb)
+	{
+		nb = nb / 16;
+		counter += ft_print_char(&hex[nb]);
+	}
+	return (counter);
+}
+
+int	ft_print_x(unsigned int nb)
+{
+	
+}

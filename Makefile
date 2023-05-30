@@ -6,7 +6,7 @@
 #    By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/28 21:32:00 by dcordoba          #+#    #+#              #
-#    Updated: 2023/05/28 21:41:37 by dcordoba         ###   ########.fr        #
+#    Updated: 2023/05/30 20:02:03 by dcordoba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ MAGENTA = \033[35m
 
 CC = cc
 NAME = libftprint.a
-SRCS = ft_printf.c ft_print_char.c ft_prints.c ft_print_u.c
+SRCS = ft_printf.c ft_print_char.c ft_prints.c ft_print_u.c ft_printnb.c
 CFLAG = -Wall -Werror -Wextra
 DEPS = ft_printf.h
 OBJECTS = $(SRCS:.c=.o)
@@ -26,10 +26,10 @@ all: $(NAME)
 
 $(NAME):$(OBJECTS)
 	@echo "$(MAGENTA)Linkeando 🔗\n $(NC)$^\n"
-	@ar rcs $(NAME) $^
+	@ar rc $(NAME) $^
 
 %.o: %.c $(DEPS)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I.
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(AZUL)Compilando 📂$(NC) $< -> $@"
 
 clean:

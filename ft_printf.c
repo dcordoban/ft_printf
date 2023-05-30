@@ -6,27 +6,28 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/05/28 21:13:42 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/30 19:27:04 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include<limits.h>
 
 static int	ft_eval_format(const char format, va_list args)
 {
 	int	len;
-	
+
 	len = 0;
 	if (format == '%')
 		len = ft_print_char('%');
-	if (format == 'c')
+	else if (format == 'c')
 		len = ft_print_char((char) va_arg(args, int));
-	if (format == 's')
+	else if (format == 's')
 		len = ft_prints(va_arg(args, char *));
-	if (format == 'u')
+	else if (format == 'u')
 		len = ft_print_u(va_arg(args, unsigned int));
-	//if (format == 'p')
-	//	len = ft_print_p(va_arg(args, int));
+	else if (format == 'd' || format == 'i')
+		len = ft_printnb(va_arg(args, int));
 	return (len);
 }
 
@@ -78,11 +79,29 @@ int	main()
 	//c = 128;
 	//s = "0";
 
-	ft_printf("%u", UINT_MAX);
-	printf("\n");
 	
-	printf("%u", UINT_MAX);
-	printf("\n");
-
+	ft_printf("Tests para tipos %%d %%i\n");	
+	ft_printf("%d\n", 0);
+	ft_printf("%d\n", -10);
+	ft_printf("%d\n", -200000);
+	ft_printf("%d\n", -6000023);
+	ft_printf("%d\n", 10);
+	ft_printf("%d\n", 10000);
+	ft_printf("%d\n", 100023);
+	ft_printf("INTMAX: %d\n", INT_MAX);
+	ft_printf("INTMIN: %d\n", INT_MIN);
+	ft_printf("dgs%dxx\n", 10);
+	ft_printf("%d%dd%d\n", 1, 2, -3);
+	ft_printf("%i\n", 0);
+	ft_printf("%i\n", -10);
+	ft_printf("%i\n", -200000);
+	ft_printf("%i\n", -6000023);
+	ft_printf("%i\n", 10);
+	ft_printf("%i\n", 10000);
+	ft_printf("%i\n", 100023);
+	ft_printf("INTMAX: %i\n", INT_MAX);
+	ft_printf("INTMIN: %i\n", INT_MIN);
+	ft_printf("dgs%ixx\n", 10);
+	ft_printf("%i%ii%i\n", 1, 2, -3);
 	return (0);
 }
