@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x.c                                       :+:      :+:    :+:   */
+/*   ft_print_X.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 20:06:34 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/05/31 22:44:08 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/05/31 22:37:51 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/31 22:43:23 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	count_digits(int b)
 	return (counter);
 }
 
-int	ft_print_hex_lower(unsigned int nb)
+int	ft_print_hex_upper(unsigned int nb)
 {
 	char	*hex;
 	char	*ptr;
 	int		i;
 
-	hex = "0123456789abcdef";
+	hex = "0123456789ABCDEF";
 	i = count_digits(nb);
 	ptr = (char *)malloc((i + 1) * sizeof(char));
 	if (!ptr)
@@ -47,4 +47,3 @@ int	ft_print_hex_lower(unsigned int nb)
 	}
 	return (ft_prints(ptr));
 }
-

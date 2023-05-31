@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/05/30 19:27:04 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:41:49 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ static int	ft_eval_format(const char format, va_list args)
 		len = ft_print_u(va_arg(args, unsigned int));
 	else if (format == 'd' || format == 'i')
 		len = ft_printnb(va_arg(args, int));
+	else if (format == 'x')
+		len = ft_print_hex_lower(va_arg(args, unsigned int));
+	else if (format == 'X')
+		len = ft_print_hex_upper(va_arg(args, unsigned int));
 	return (len);
 }
 
@@ -80,7 +84,7 @@ int	main()
 	//s = "0";
 
 	
-	ft_printf("Tests para tipos %%d %%i\n");	
+	ft_printf("Tests para tipo %%d %%i \n");
 	ft_printf("%d\n", 0);
 	ft_printf("%d\n", -10);
 	ft_printf("%d\n", -200000);
@@ -103,5 +107,13 @@ int	main()
 	ft_printf("INTMIN: %i\n", INT_MIN);
 	ft_printf("dgs%ixx\n", 10);
 	ft_printf("%i%ii%i\n", 1, 2, -3);
+	printf("\n");
+	ft_printf("Tests para tipo %%x \n");
+	ft_printf("%x\n", 42);
+	ft_printf("before %x after\n", 42);
+	ft_printf("%x%x%x%x%x\n", 1, 100, 999, 42, 999988888);
+	ft_printf("a%xb%xc%xd\n", 0, 55555, 100000);
+	ft_printf("%x, %x\n", 0, 2147483647);
+
 	return (0);
 }
