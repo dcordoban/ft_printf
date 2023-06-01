@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/05/31 22:41:49 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:12:39 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ static int	ft_eval_format(const char format, va_list args)
 		len = ft_print_u(va_arg(args, unsigned int));
 	else if (format == 'd' || format == 'i')
 		len = ft_printnb(va_arg(args, int));
-	else if (format == 'x')
-		len = ft_print_hex_lower(va_arg(args, unsigned int));
-	else if (format == 'X')
-		len = ft_print_hex_upper(va_arg(args, unsigned int));
+	else if (format == 'x' || format == 'X')
+		len = ft_print_hex(format, va_arg(args, unsigned int));
+
 	return (len);
 }
 
@@ -83,7 +82,7 @@ int	main()
 	//c = 128;
 	//s = "0";
 
-	
+
 	ft_printf("Tests para tipo %%d %%i \n");
 	ft_printf("%d\n", 0);
 	ft_printf("%d\n", -10);
@@ -114,6 +113,12 @@ int	main()
 	ft_printf("%x%x%x%x%x\n", 1, 100, 999, 42, 999988888);
 	ft_printf("a%xb%xc%xd\n", 0, 55555, 100000);
 	ft_printf("%x, %x\n", 0, 2147483647);
-
+	printf("\n");
+	ft_printf("Tests para tipo %%X \n");
+	ft_printf("%X\n", 42);
+	ft_printf("before %X after\n", 42);
+	ft_printf("%X%X%X%X%X\n", 1, 100, 999, 42, 999988888);
+	ft_printf("a%Xb%Xc%Xd\n", 0, 55555, 100000);
+	ft_printf("%X, %X\n", 0, UINT_MAX);
 	return (0);
 }
