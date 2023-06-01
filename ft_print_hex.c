@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:37:15 by david             #+#    #+#             */
-/*   Updated: 2023/06/01 12:49:02 by david            ###   ########.fr       */
+/*   Updated: 2023/06/01 18:56:03 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_print_hex(const char format, unsigned int nb)
 	char	*hex;
 	char	*ptr;
 	int		i;
+	int		counter;
 
 	if (format == 'x')
 		hex = "0123456789abcdef";
@@ -48,6 +49,7 @@ int	ft_print_hex(const char format, unsigned int nb)
 		ptr[i--] = hex[nb % 16];
 		nb = nb / 16;
 	}
-	return (ft_prints(ptr));
+	counter = ft_prints(ptr);
+	free(ptr);
+	return (counter);
 }
-

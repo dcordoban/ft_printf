@@ -6,7 +6,7 @@
 #    By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/28 21:32:00 by dcordoba          #+#    #+#              #
-#    Updated: 2023/06/01 17:14:14 by dcordoba         ###   ########.fr        #
+#    Updated: 2023/06/01 19:06:36 by dcordoba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,30 +16,28 @@ ROJO = \033[31m
 MAGENTA = \033[35m
 
 CC = cc
-NAME = libftprintf.a
-SRCS = ft_printf.c ft_print_char.c ft_prints.c ft_print_u.c \
-		ft_printnb.c ft_print_hex.c ft_print_p.c
+NAME = a.out
+SRCS = ft_printf.h ft_printf.c ft_print_char.c ft_prints.c \
+	ft_print_u.c ft_printnb.c ft_print_hex.c ft_print_p.c main.c
 CFLAG = -Wall -Werror -Wextra
 DEPS = ft_printf.h
-OBJECTS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):$(OBJECTS)
-	@echo "$(MAGENTA)Linkeando 🔗\n $(NC)$^\n"
-	@ar rc $(NAME) $^
+$(NAME):
+	@$(CC) $(CFLAGS) $(SRCS)
+	@echo "$(AZUL)Compilando 📂$(NC) $(SRCS)"
+	@echo chmod +x $(NAME)
+	@echo "$(MAGENTA)Ejecutable ✅$(NC) $(NAME)"
 
-%.o: %.c $(DEPS)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(AZUL)Compilando 📂$(NC) $< -> $@"
 
 clean:
-	@/bin/rm -f $(OBJECTS)
-	@echo "$(ROJO)Borrando objetos...🧹$(NC)\n$(OBJECTS)\n"
+	@/bin/rm -f $(NAME)
+	@echo "$(ROJO)Borrando ejecutable...🧹$(NC)\n$(NAME)\n"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "$(ROJO)Borrando libreria...🧹$(NC)\n$(NAME)\n"
+	@echo "$(ROJO)Borrando ejecutable...🧹$(NC)\n$(NAME)\n"
 
 re: fclean all
 

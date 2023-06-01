@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:25:33 by david             #+#    #+#             */
-/*   Updated: 2023/05/28 20:34:58 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:44:43 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_print_char(char c)
 {
-	return (write(1, &c, 1));
+	if (write(1, &c, 1) != 1)
+		return (-1);
+	return (1);
 }
-

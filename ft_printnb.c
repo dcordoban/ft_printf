@@ -6,10 +6,9 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:57:20 by david             #+#    #+#             */
-/*   Updated: 2023/05/30 19:47:44 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:17:37 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -39,4 +38,3 @@ int	ft_printnb(int n)
 		counter += ft_print_char('0' + n);
 	return (counter);
 }
-

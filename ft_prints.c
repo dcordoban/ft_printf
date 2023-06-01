@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:35:44 by david             #+#    #+#             */
-/*   Updated: 2023/05/28 20:55:24 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:41:32 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ int	ft_prints(char *c)
 	size_t	i;
 
 	i = 0;
-
+	if (!c)
+	{
+		if (write(1, "(null)", 6) != 6)
+			return (-1);
+		return (6);
+	}
 	while (c[i] != '\0')
 	{
 		if (write(1, &c[i], 1) == -1)
