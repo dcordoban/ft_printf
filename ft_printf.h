@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:43:38 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/05/31 22:43:41 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:49:18 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	ft_print_char(char c);
 int	ft_prints(char *c);
 int	ft_print_u(unsigned int nb);
 int	ft_printnb(int nb);
-int	ft_print_hex_lower(unsigned int nb);
-int	ft_print_hex_upper(unsigned int nb);
+int	ft_print_hex(const char format, unsigned int nb);
 #endif

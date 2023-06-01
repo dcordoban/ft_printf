@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+         #
+#    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/28 21:32:00 by dcordoba          #+#    #+#              #
-#    Updated: 2023/05/31 22:40:11 by dcordoba         ###   ########.fr        #
+#    Updated: 2023/06/01 12:59:49 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ MAGENTA = \033[35m
 
 CC = cc
 NAME = tests.out
-SRCS = ft_printf.h ft_printf.c ft_print_char.c ft_prints.c ft_print_u.c ft_printnb.c ft_print_x.c ft_printX.c
+SRCS = ft_printf.h ft_printf.c ft_print_char.c ft_prints.c \
+	ft_print_u.c ft_printnb.c ft_print_hex.c
 CFLAG = -Wall -Werror -Wextra
 DEPS = ft_printf.h
 OBJECTS = $(SRCS:.c=.o)
@@ -29,7 +30,7 @@ $(NAME):
 	@echo "$(AZUL)Compilando 📂$(NC) $(SRCS)"
 	@echo chmod +x $(NAME)
 	@echo "$(MAGENTA)Ejecutable ✅$(NC) $(NAME)"
-	
+
 
 clean:
 	@/bin/rm -f $(NAME)
@@ -41,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
