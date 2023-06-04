@@ -6,35 +6,30 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:57:11 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/06/01 20:19:20 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:36:17 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_put_char(char c, int count)
+static int	ft_put_char(char c, int *len)
 {
-	if (write(1, &c, 1) != 1)
-		return (-1);
-	count += 1;
-	return (count);
+	if (write(1, &c, 1) == 1)
+		*len += 1;
+	else
+		*len = -1;
+	return (*len);
 }
 
-int	ft_print_u(unsigned int nb)
+void	*ft_print_u(unsigned int nb, int *len)
 {
-	int	counter;
-
-	counter = 0;
 	if (nb > 9)
 	{
-		counter++;
-		ft_print_u(nb / 10);
+		ft_print_u(nb / 10, len);
 		nb = nb % 10;
 	}
 	if (nb <= 9)
 	{
-		if (ft_put_char('0' + nb, counter) != 1)
-			return (-1);
+		ft_put_char('0' + nb, len);
 	}
-	return (counter);
 }

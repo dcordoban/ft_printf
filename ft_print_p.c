@@ -6,29 +6,22 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:30:52 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/06/01 16:53:53 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/04 11:43:49 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_p(void	*p)
+int	ft_print_p(void *p, int *len)
 {
-	unsigned long	ptr;
-	int					counter;
-	char	*hex;
-
-	ptr = (unsigned long long)p;
-	hex = "0123456789abcdef";
-	counter = 0;
-	if (!ptr)
-		return (-1);
-	if (ft_prints("0x2") != 3)
-		return (-1);
-	while (ptr)
+	if (!p)
 	{
-		counter += ft_print_char(hex[ptr % 16]);
-		ptr++;
+		if (write(1, "(nil)", 5) != 5)
+			return (-1);
+		return (5);
 	}
-	return (counter);
+	if (ft_prints("0x") == -1)
+		return (-1);
+	*len += 2;
+	return (ft_print_hex('x', (unsigned long)p, len));
 }

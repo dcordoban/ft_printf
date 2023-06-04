@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 22:43:38 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/06/01 19:01:51 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/04 11:30:12 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include<stddef.h>
 # include<stdlib.h>
 
-int	ft_printf(char const *format, ...);
-int	ft_print_char(char c);
-int	ft_prints(char *c);
-int	ft_print_u(unsigned int nb);
-int	ft_printnb(int nb);
-int	ft_print_hex(const char format, unsigned int nb);
-int	ft_print_p(void	*p);
+int		ft_printf(char const *format, ...);
+int		ft_print_char(char c);
+int		ft_prints(char *c);
+void	*ft_print_u(unsigned int nb, int *len);
+void	*ft_printnb(int nb, int *len);
+int		ft_print_hex(const char format, unsigned long int nb, int *len);
+int		ft_print_p(void	*p, int *len);
 #endif

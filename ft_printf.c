@@ -6,12 +6,11 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/06/01 19:17:42 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/04 11:47:55 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include<limits.h>
 
 static int	ft_eval_format(const char format, va_list args)
 {
@@ -25,30 +24,30 @@ static int	ft_eval_format(const char format, va_list args)
 	else if (format == 's')
 		len = ft_prints(va_arg(args, char *));
 	else if (format == 'u')
-		len = ft_print_u(va_arg(args, unsigned int));
+		len = (size_t)ft_print_u(va_arg(args, unsigned int), &len);
 	else if (format == 'd' || format == 'i')
-		len = ft_printnb(va_arg(args, int));
+		len = (size_t)ft_printnb(va_arg(args, int), &len);
 	else if (format == 'x' || format == 'X')
-		len = ft_print_hex(format, va_arg(args, unsigned int));
+		len = ft_print_hex(format, va_arg(args, unsigned int), &len);
 	else if (format == 'p')
-		len = ft_print_p(va_arg(args, void *));
+		len = ft_print_p(va_arg(args, void *), &len);
 	return (len);
 }
 
 static int	ft_check_format(const char *format, va_list args, int result)
 {
 	int	i;
-	int	str;
+	int	p_chars;
 
 	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			str = ft_eval_format(format[i + 1], args);
-			if (str == -1)
+			p_chars = ft_eval_format(format[i + 1], args);
+			if (p_chars == -1)
 				return (-1);
-			result += str;
+			result += p_chars;
 			i++;
 		}
 		else

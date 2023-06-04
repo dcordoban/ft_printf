@@ -6,13 +6,13 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:37:15 by david             #+#    #+#             */
-/*   Updated: 2023/06/01 18:56:03 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:02:14 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_digits(int b)
+static int	count_digits(unsigned long int b)
 {
 	size_t	counter;
 
@@ -27,29 +27,28 @@ static int	count_digits(int b)
 	return (counter);
 }
 
-int	ft_print_hex(const char format, unsigned int nb)
+int	ft_print_hex(const char format, unsigned long int nb, int *len)
 {
-	char	*hex;
-	char	*ptr;
+	char	*hex_base;
+	char	*tmp;
 	int		i;
-	int		counter;
 
 	if (format == 'x')
-		hex = "0123456789abcdef";
+		hex_base = "0123456789abcdef";
 	else if (format == 'X')
-		hex = "0123456789ABCDEF";
+		hex_base = "0123456789ABCDEF";
 	i = count_digits(nb);
-	ptr = (char *)malloc((i + 1) * sizeof(char));
-	if (!ptr)
+	tmp = (char *)malloc((i + 1) * sizeof(char));
+	if (!tmp)
 		return (-1);
-	ptr[i] = '\0';
+	tmp[i] = '\0';
 	i--;
 	while (nb >= 0 && i >= 0)
 	{
-		ptr[i--] = hex[nb % 16];
+		tmp[i--] = hex_base[nb % 16];
 		nb = nb / 16;
 	}
-	counter = ft_prints(ptr);
-	free(ptr);
-	return (counter);
+	*len += ft_prints(tmp);
+	free(tmp);
+	return (*len);
 }
