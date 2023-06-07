@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:31:22 by david             #+#    #+#             */
-/*   Updated: 2023/06/04 11:47:55 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:28:02 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_eval_format(const char format, va_list args)
 	else if (format == 's')
 		len = ft_prints(va_arg(args, char *));
 	else if (format == 'u')
-		len = (size_t)ft_print_u(va_arg(args, unsigned int), &len);
+		len = ft_print_u(va_arg(args, unsigned int), len);
 	else if (format == 'd' || format == 'i')
-		len = (size_t)ft_printnb(va_arg(args, int), &len);
+		len = ft_printnb(va_arg(args, int), len);
 	else if (format == 'x' || format == 'X')
 		len = ft_print_hex(format, va_arg(args, unsigned int), &len);
 	else if (format == 'p')
