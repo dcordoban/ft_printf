@@ -6,11 +6,11 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:57:20 by david             #+#    #+#             */
-/*   Updated: 2023/06/07 20:07:36 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:44:08 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static int	ft_put_char(char c, int len)
 {

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prints.c                                        :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 19:35:44 by david             #+#    #+#             */
-/*   Updated: 2023/06/01 17:41:32 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/02/28 15:04:08 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/18 18:58:45 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_prints(char *c)
+int	ft_isupper(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (!c)
-	{
-		if (write(1, "(null)", 6) != 6)
-			return (-1);
-		return (6);
-	}
-	while (c[i] != '\0')
-	{
-		if (write(1, &c[i], 1) == -1)
-			return (-1);
-		i++;
-	}
-	return (i);
+	if ((unsigned char) c >= 'A' && (unsigned char) c <= 'Z')
+		return (1);
+	else
+		return (0);
 }

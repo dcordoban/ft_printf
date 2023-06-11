@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 20:30:52 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/06/07 17:08:33 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/05/02 16:14:44 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/18 19:00:16 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_print_p(void *p, int *len)
+int	ft_isascii(int c)
 {
-	if (ft_prints("0x") == -1)
-		return (-1);
-	*len += 2;
-	return (ft_print_hex('x', (unsigned long)p, len));
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_u.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 20:57:11 by dcordoba          #+#    #+#             */
-/*   Updated: 2023/06/07 19:27:29 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/05/11 18:41:38 by david             #+#    #+#             */
+/*   Updated: 2023/05/18 18:43:43 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static int	ft_put_char(char c, int len)
+char	*ft_strdup(const char *s)
 {
-	if (write(1, &c, 1) == 1)
-		len += 1;
-	else
-		return (-1);
-	return (len);
-}
+	char	*s_copy;
+	size_t	s_len;
 
-int	ft_print_u(unsigned int nb, int len)
-{
-	if (nb > 9)
+	s_len = ft_strlen(s) + 1;
+	s_copy = (char *)malloc(s_len * sizeof(char));
+	if (s_copy)
 	{
-		len = ft_print_u(nb / 10, len);
-		if (len == -1)
-			return (-1);
-		nb = nb % 10;
+		ft_memcpy(s_copy, s, s_len);
+		return (s_copy);
 	}
-	if (nb <= 9)
-	{
-		len = ft_put_char('0' + nb, len);
-		if (len == -1)
-			return (-1);
-	}
-	return (len);
+	return (0);
 }

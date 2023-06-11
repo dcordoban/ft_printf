@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 19:25:33 by david             #+#    #+#             */
-/*   Updated: 2023/06/01 17:44:43 by dcordoba         ###   ########.fr       */
+/*   Created: 2023/02/28 15:04:08 by dcordoba          #+#    #+#             */
+/*   Updated: 2023/05/18 18:54:34 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(char c)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (write(1, &c, 1) != 1)
-		return (-1);
-	return (1);
+	size_t	i;
+	char	*start;
+
+	start = s;
+	i = 0;
+	while (i < n)
+	{
+		start[i] = c;
+		i++;
+	}
+	return (start);
 }

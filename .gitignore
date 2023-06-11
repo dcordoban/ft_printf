@@ -57,6 +57,6 @@ dkms.conf
 .vscode/c_cpp_properties.json
 .vscode/settings.json
 .vscode/tasks.json
-src/
 ./vscode
 .vscode/launch.json
+./build
