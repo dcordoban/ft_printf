@@ -83,7 +83,7 @@ $(NAME): $(OBJECTS) $(LIBFT_NAME)
 -include $(DEPS)
 
 $(LIBFT_NAME):
-	make bonus -C $(LIBFT_DIR)
+	@$(MAKE) bonus -C $(LIBFT_DIR)
 -include $(DEPS)
 	
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c
@@ -103,8 +103,8 @@ fclean: clean
 re: fclean all
 
 callforstatus:
-	make bonus -C $(LIBFT_DIR)
-	make -C . $(NAME)
+	@$(MAKE) bonus -C $(LIBFT_DIR) --silent
+	@$(MAKE) -C . $(NAME) --silent
 
 .PHONY: all clean fclean re
-.SILENT: clean fclean callforstatus $(LIBFT_NAME)
+.SILENT: clean fclean $(LIBFT_NAME)
