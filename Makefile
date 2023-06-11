@@ -107,4 +107,4 @@ callforstatus:
 	@$(MAKE) -C . $(NAME) --silent
 
 .PHONY: all clean fclean re
-.SILENT: clean fclean $(LIBFT_NAME)
+.SILENT: clean fclean
