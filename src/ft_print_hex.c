@@ -6,7 +6,7 @@
 /*   By: dcordoba <dcordoba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:37:15 by david             #+#    #+#             */
-/*   Updated: 2023/06/11 17:44:46 by dcordoba         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:01:32 by dcordoba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_print_hex(const char format, unsigned long int nb, int *len)
 		return (-1);
 	tmp[i] = '\0';
 	i--;
-	while (nb && i >= 0)
+	while (nb >= 0 && i >= 0)
 	{
 		tmp[i--] = hex_base[nb % 16];
 		nb = nb / 16;
